@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Мета данные страницы (кодировка, описание, ключевые слова) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Главная страница автосалона">
@@ -9,25 +8,57 @@
     <title>Главная</title>
 </head>
 <body>
-    <!-- Заголовок страницы и навигационное меню -->
-     <header>
-        <img src="Images/Logo.jpg" alt="logo" width="100" height="100">
+
+    <header>
+        <img src="Images/Logo.jpg" alt="Логотип" width="100" title="Логотип">
+        <nav>
+            <a href="catalog.html">Каталог</a>
+            <a href="contacts.html">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
         <h1>Добро пожаловать в наш автосалон &hearts;</h1>
-        <ul>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-     </header>
-    <!-- Основное содержание: описание автосалона и популярные модели -->
-    <h2>О нас</h2>
-    <p>Мы предлагаем широкий выбор автомобилей различных марок и моделей. Наша цель - помочь вам найти идеальный автомобиль.</p>
-    <img src="Images/CarShowroom.jpg" alt="Автомобиль" title="Автосалон" width="417" height="235">
-    
-    <h2>Популярные модели</h2>
-    <ul>
-        <li>BMW X5</li>
-        <li>Mercedes-Benz C-Class</li>
-        <li>Audi A6</li>
-    </ul>
+        <section>
+            <section>
+                <h2>О нас</h2>
+                <p>Мы предлагаем широкий выбор автомобилей различных марок и моделей. Наша цель - помочь вам найти идеальный автомобиль.</p>
+                <video src="Videos/CarSgowroom.mp4" controls width="450"></video>
+            </section>
+            <article>
+                <h2>Популярные модели</h2>
+                <ul>
+                    <li>BMW X5</li>
+                    <li>Mercedes-Benz C-Class</li>
+                    <li>Audi A6</li>
+                </ul>
+            </article>
+            <aside>
+                <h3>Специальное предложение</h3>
+                <p>При покупке одного автомобиля Вы получаете скидку 5% на второй!</p>
+            </aside>
+
+            <form>
+                <fieldset>
+                    <legend>Отзывы</legend>
+                    <label for="name">Имя*</label><input type="text" required>
+                    <label for="email">Email</label><input type="email">
+                    <label for="text"></label>Отзыв*<input type="text" required>
+                </fieldset>
+                <input type="submit">
+                </form>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <p>Автор: Чернявский Е.В.</p>
+            <nav>
+                <a href="https://vk.com/">Вконтакте</a>
+                <a href="https://web.telegram.org/k/#@Telegram">@Telegram</a>
+                <a href="https://www.instagram.com/">Instagram</a>
+            </nav>
+        </section>
+    </footer>
 </body>
 </html>
