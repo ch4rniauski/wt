@@ -91,6 +91,7 @@ header nav{
 
 main{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -99,7 +100,34 @@ footer{
     justify-content: center;
 }
 
-footer section nav{
+footer nav{
     display: flex;
     justify-content: space-between;
+}
+
+fieldset{
+    display: flex;
+}
+
+fieldset label{
+    display: flex;
+    padding-left: 5px;
+}
+
+@media (max-width: 768px){
+    header{
+        flex-direction: column;
+    }
+
+    main{
+        flex-direction: column;
+    }
+
+    fieldset{
+        flex-direction: column;
+    }
+
+    footer nav{
+        flex-direction: column;
+    }
 }
