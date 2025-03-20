@@ -34,6 +34,7 @@ a{
     text-decoration:none;
     color: var(--a-color);
     font-size: 18px;
+    transition: 1s;
 }
 
 a:hover {
@@ -61,11 +62,12 @@ table td{
 
 .submit-button{
     cursor: pointer;
+    transition: 0.25s;
 }
 .submit-button:hover{
     color: var(--a-color);
+    transform: scale(1.05);
 }
-
 
 .image{
     background: var(--background-gradient); 
@@ -114,6 +116,22 @@ fieldset label{
     padding-left: 5px;
 }
 
+.popular_models{
+    animation: appearance 1s;
+}
+
+img {
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.logo-img{
+    animation: spinLogo .5s;
+}
+
 @media (max-width: 768px){
     header{
         flex-direction: column;
@@ -129,5 +147,25 @@ fieldset label{
 
     footer nav{
         flex-direction: column;
+    }
+}
+
+@keyframes appearance{
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes spinLogo{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
     }
 }
