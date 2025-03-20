@@ -64,10 +64,9 @@ table td{
 
 .submit-button{
     cursor: pointer;
-    transition: 0.25s;
 }
 .submit-button:hover{
-    transform: scale(1.05);
+    color: var(--a-color);
 }
 
 .image{
