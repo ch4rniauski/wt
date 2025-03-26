@@ -136,6 +136,21 @@ img:hover {
     animation: spinLogo .5s;
 }
 
+.btns{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+button{
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
 @media (max-width: 768px){
     header{
         flex-direction: column;

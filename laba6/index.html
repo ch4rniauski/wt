@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Главная страница автосалона">
+    <meta name="keywords" content="автомобили, авто, машины">
+    <link rel="stylesheet" href="styles.css">
+    <title>Главная</title>
+</head>
+<body>
+
+    <header class="logo">
+        <img src="Images/Logo.jpg" alt="Логотип" width="100" title="Логотип" class="logo-img">
+        <nav>
+            <a href="catalog.html">Каталог</a>
+            <a href="contacts.html">Контакты</a>
+        </nav>
+    </header>
+
+    <h1>Добро пожаловать в наш автосалон &hearts;</h1>
+
+    <main>
+        <section>
+            <section>
+                <h2>Быстрый переход</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#popular_models">Популярные модели</a></li>
+                        <li><a href="#about">О нас</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="about">
+                <h2 id="about">О нас</h2>
+                <p>Мы предлагаем широкий выбор автомобилей различных марок и моделей. Наша цель - помочь вам найти идеальный автомобиль.</p>
+                <video src="Videos/CarSgowroom.mp4" controls width="450"></video>
+            </section>
+        </section>
+
+        <section >
+            <article class="popular_models">
+                <h2 id="popular_models">Популярные модели</h2>
+                <ul>
+                    <li>BMW X5</li>
+                    <li>Mercedes-Benz C-Class</li>
+                    <li>Audi A6</li>
+                </ul>
+            </article>
+            <aside>
+                <h3>Специальное предложение</h3>
+                <p>При покупке одного автомобиля Вы получаете скидку 5% на второй!</p>
+            </aside>
+        </section>
+    </main>
+    <form>
+        <fieldset>
+            <legend>Отзывы</legend>
+            <label for="name">Имя*</label><input type="text" required>
+            <label for="email">Email</label><input type="email">
+            <label for="text"></label>Отзыв*<input type="text" required>
+        </fieldset>
+        <input type="submit" class="submit-button">
+    </form>
+
+    <footer>
+        <section>
+            <p>Автор: Чернявский Е.В.</p>
+            <nav class="socials">
+                <a href="https://vk.com/">Вконтакте</a>
+                <a href="https://web.telegram.org/k/#@Telegram">@Telegram</a>
+                <a href="https://www.instagram.com/">Instagram</a>
+            </nav>
+        </section>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
