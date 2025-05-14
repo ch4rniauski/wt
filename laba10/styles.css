@@ -1,0 +1,310 @@
+:root{
+    --background-gradient: linear-gradient(to right, #e9c46a, #2a9d8f);
+    --h1-color: rgb(255,127,80);
+    --h2-color: rgb(100,149,237);
+    --h3-color: rgb(143,188,143);
+    --a-color: rgb(220,20,60);
+    --th-color: rgb(222,184,135);
+    --td-color: rgb(233,150,122);
+    --error-color: rgb(255, 64, 0);
+    --fieldset-background: rgb(246, 240, 238);
+    --font-base: 'Roboto', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+}
+
+ul{
+    list-style-type: circle;
+}
+
+h1{
+    font-family: sans-serif;
+    color: var(--h1-color);
+    text-align: center;
+    font-size: 40px;
+}
+
+h2{
+    color: var(--h2-color);
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+h3{
+    color:var(--h3-color);
+    font-size: 21px;
+}
+
+a{
+    text-decoration:none;
+    color: var(--a-color);
+    font-size: 18px;
+    transition: 1s;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: 50px;
+}
+
+table th{
+    background-color:var(--th-color);
+}
+
+table td{
+    background-color: var(--td-color);
+}
+
+.table{
+    background: var(--background-gradient);
+    padding-bottom: 20px;
+}
+
+.submit-button{
+    cursor: pointer;
+    transition: 0.25s;
+}
+.submit-button:hover, .reset-button:hover{
+    color: var(--a-color);
+    transform: scale(1.05);
+}
+
+.image{
+    background: var(--background-gradient); 
+}
+
+img{
+    margin: 20px;
+}
+
+header{
+    display: flex;
+    background: var(--background-gradient); 
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+footer nav{
+    display: flex;
+}
+
+footer a{
+    display: flex;
+    padding-left: 5px;
+}
+
+fieldset{
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    background-color: var(--fieldset-background);
+}
+
+fieldset label{
+    display: flex;
+    padding-top: 5px;
+}
+
+.popular_models{
+    animation: appearance 1s;
+}
+
+img {
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.logo-img{
+    animation: spinLogo .5s;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+button{
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.submit-button, .reset-button{
+    margin: 10px 5px;
+    height: 20px;
+}
+
+#services-button, #logo-button {
+    width: 100px;
+    height: 28px;
+    border-radius: 5px;
+    background-color: var(--h1-color);
+    transition: 0.4s;
+    border: none;
+}
+
+#service-button, #logo-button:hover{
+    cursor: pointer;
+}
+
+#logo {
+    transition: all 0.5s linear;
+    position: relative;
+}
+
+
+
+#hamburger-menu {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--h2-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#hamburger-menu:hover {
+    background-color: var(--a-color);
+}
+
+#main-nav {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--fieldset-background);
+    width: 150px;
+    height: 80px;
+    padding: 10px;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+#main-nav a {
+    margin: 10px 0;
+    color: var(--h1-color);
+    text-decoration: none;
+}
+
+#main-nav a:hover {
+    color: var(--a-color);
+    text-decoration: underline;
+}
+
+body {
+    font-family: var(--font-base);
+    line-height: 1.6;
+    margin: 20px;
+    font-variation-settings: 'wght' 400, 'wdth' 100;
+}
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-variation-settings: 'wght' 600, 'wdth' 120;
+}
+p {
+    font-variation-settings: 'wght' 400, 'wdth' 95;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+ul, ol {
+    text-align: center;
+    font-size: 18px;
+    margin-left: 20px;
+}
+li {
+    margin-bottom: 10px;
+}
+button, input, textarea {
+    font-variation-settings: 'wght' 500, 'wdth' 105;
+    font-family: var(--font-base);
+}
+a {
+    font-family: var(--font-base);
+}
+
+@media (max-width: 768px){
+    header{
+        flex-direction: column;
+    }
+
+    main{
+        flex-direction: column;
+    }
+
+    fieldset{
+        flex-direction: column;
+    }
+
+    footer nav{
+        flex-direction: column;
+    }
+}
+
+@keyframes appearance{
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes spinLogo{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
