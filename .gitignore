@@ -484,4 +484,5 @@ $RECYCLE.BIN/
 *.swp
 
 #laba12 files
-*.txt
+large_input.txt
+large_output.txt
