@@ -1,0 +1,14 @@
+services:
+  postgres-laba16:
+    image: postgres:17.6-trixie
+    container_name: postgres-laba16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=Laba16
+    volumes:
+      - postgres-laba16-data:/var/lib/postgresql/data
+volumes:
+  postgres-laba16-data:

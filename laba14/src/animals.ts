@@ -6,7 +6,7 @@ export class Animal {
   }
 
   public makeSound(): void {
-      console.log("Sound");
+      console.log("Звуе");
   }
 }
 
@@ -16,6 +16,6 @@ export class Dog extends Animal {
   }
 
   public makeSound(): void {
-      console.log("Woof!");
+      console.log("Гав!");
   }
 }

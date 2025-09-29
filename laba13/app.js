@@ -14,9 +14,10 @@ app.use((req, res, next) => {
 });
 
 let items = [
-  { 
-    id: 1, name:
-    'Apple', amount: 100
+  {
+    id: 1, 
+    name: 'Apple',
+    amount: 100
   },
   { 
     id: 2,
