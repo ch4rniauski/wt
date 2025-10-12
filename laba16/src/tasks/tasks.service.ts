@@ -1,64 +1,67 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateTaskDto } from '../dto/create-task.dto';
+import { PrismaService } from '../prisma/prisma.service';
 import { UpdateTaskDto } from '../dto/update-task.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Task } from './entities/task.entity';
-import { Repository } from 'typeorm';
-import { UsersService } from './users.service';
+import { CreateTaskDto } from '../dto/create-task.dto';
 
 @Injectable()
 export class TasksService {
-  constructor(
-    @InjectRepository(Task)
-    private readonly tasksRepository: Repository<Task>,
-    private readonly usersService: UsersService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async getAllTasks(): Promise<Task[]> {
-    return this.tasksRepository.find({ relations: ['user'] });
+  getAllTasks() {
+    return this.prisma.task.findMany({ include: { user: true } });
   }
 
-  async getTaskById(id: number): Promise<Task | null> {
-    return this.tasksRepository.findOne({ where: { id }, relations: ['user'] });
+  getTaskById(id: number) {
+    return this.prisma.task.findUnique({
+      where: { id },
+      include: { user: true },
+    });
   }
 
-  async createTask(
-    createTaskDto: CreateTaskDto,
-    userId: number,
-  ): Promise<Task> {
-    const user = await this.usersService.findOne(userId);
-
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-
-    const newTask = this.tasksRepository.create({
-      ...createTaskDto,
-      user,
+  async createTask(createTaskDto: CreateTaskDto) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: createTaskDto.userId },
     });
 
-    return this.tasksRepository.save(newTask);
+    if (!user) {
+      throw new NotFoundException(
+        `User with id=${createTaskDto.userId} not found`,
+      );
+    }
+
+    return this.prisma.task.create({
+      data: {
+        title: createTaskDto.title,
+        description: createTaskDto.description,
+        user: { connect: { id: createTaskDto.userId } },
+      },
+    });
   }
 
-  async updateTask(
-    id: number,
-    updateTaskDto: UpdateTaskDto,
-  ): Promise<Task | null> {
-    await this.tasksRepository.update(id, updateTaskDto);
-
-    return this.getTaskById(id);
+  updateTask(id: number, updateTaskDto: UpdateTaskDto) {
+    return this.prisma.task.update({
+      where: { id },
+      data: {
+        title: updateTaskDto.title,
+        completed: updateTaskDto.completed,
+      },
+    });
   }
 
-  async deleteTask(id: number): Promise<boolean> {
-    const result = await this.tasksRepository.delete(id);
+  async deleteTask(id: number) {
+    const deleted = await this.prisma.task.delete({ where: { id } });
 
-    return result.affected === 1;
+    if (!deleted) {
+      throw new NotFoundException(`Task with id=${id} not found`);
+    }
+
+    return true;
   }
 
-  async getTasksByUser(userId: number): Promise<Task[]> {
-    return this.tasksRepository.find({
-      where: { user: { id: userId } },
-      relations: ['user'],
+  getTasksByUserId(userId: number) {
+    return this.prisma.task.findMany({
+      where: { userId },
+      include: { user: false },
     });
   }
 }

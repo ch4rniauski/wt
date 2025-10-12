@@ -6,7 +6,7 @@ export class Animal {
   }
 
   public makeSound(): void {
-      console.log("Звуе");
+      console.log("Звук");
   }
 }
 

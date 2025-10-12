@@ -16,7 +16,7 @@ let autoString = "laba14 autoString";
 let autoNumber = 333;
 let autoArray = [10, 20, 30];
 
-function concat(str: string, num: number): string {
+function concat(str: string, num: number): number | string {
     return str + " " + num;
 }
 
