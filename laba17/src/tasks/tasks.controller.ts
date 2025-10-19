@@ -1,36 +1,36 @@
 import {
+  Body,
   Controller,
+  Delete,
   Get,
+  NotFoundException,
+  Param,
   Post,
   Put,
-  Delete,
-  Param,
-  Body,
-  NotFoundException,
-  UseGuards,
   SetMetadata,
+  UseGuards,
 } from '@nestjs/common';
-import { TasksService } from './tasks.service';
 import { CreateTaskDto } from '../dto/create-task.dto';
 import { UpdateTaskDto } from '../dto/update-task.dto';
-import { Task, User } from '@prisma/client';
+import { Task } from '../entities/task.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from '../roles/roles-guard';
+import { TasksServiceRepository } from './tasks.service-repo';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(private readonly tasksService: TasksService) {}
+  constructor(private readonly tasksService: TasksServiceRepository) {}
 
   @Get()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @SetMetadata('roles', ['user'])
-  getAllTasks(): Promise<(Task & { user: User })[]> {
-    return this.tasksService.getAllTasks();
+  getAllTasks(): Promise<Task[]> {
+    return this.tasksService.findAll();
   }
 
   @Get(':id')
-  async getTaskById(@Param('id') id: string): Promise<Task & { user: User }> {
-    const task = await this.tasksService.getTaskById(Number(id));
+  async getTaskById(@Param('id') id: string): Promise<Task> {
+    const task = await this.tasksService.findOne(Number(id));
 
     if (!task) {
       throw new NotFoundException('Task not found');
@@ -40,8 +40,8 @@ export class TasksController {
   }
 
   @Post()
-  createTask(@Body() createTaskDto: CreateTaskDto) {
-    return this.tasksService.createTask(createTaskDto);
+  createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksService.create(createTaskDto);
   }
 
   @Put(':id')
@@ -49,7 +49,7 @@ export class TasksController {
     @Param('id') id: string,
     @Body() updateTaskDto: UpdateTaskDto,
   ): Promise<Task> {
-    const task = await this.tasksService.updateTask(Number(id), updateTaskDto);
+    const task = await this.tasksService.update(Number(id), updateTaskDto);
 
     if (!task) {
       throw new NotFoundException('Task not found');
@@ -60,7 +60,7 @@ export class TasksController {
 
   @Delete(':id')
   async deleteTask(@Param('id') id: string): Promise<{ deleted: boolean }> {
-    const success = await this.tasksService.deleteTask(Number(id));
+    const success = await this.tasksService.delete(Number(id));
 
     if (!success) {
       throw new NotFoundException('Task not found');
@@ -71,6 +71,6 @@ export class TasksController {
 
   @Get('users/:userId')
   getTasksByUserId(@Param('userId') userId: string): Promise<Task[]> {
-    return this.tasksService.getTasksByUserId(Number(userId));
+    return this.tasksService.getTasksByUser(Number(userId));
   }
 }

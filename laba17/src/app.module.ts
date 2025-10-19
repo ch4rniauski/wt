@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { RolesModule } from './roles/roles.module';
 
@@ -22,7 +21,6 @@ import { RolesModule } from './roles/roles.module';
     }),
     TasksModule,
     UsersModule,
-    PrismaModule,
     AuthModule,
     RolesModule,
   ],
