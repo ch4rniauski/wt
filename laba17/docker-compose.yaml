@@ -1,14 +1,30 @@
 services:
-  postgres-laba16:
+  nest-js-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-js-api
+    image: nest-js-api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+    depends_on:
+      - postgres-db
+  postgres-db:
     image: postgres:17.6-trixie
     container_name: postgres-laba16
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=5432
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=Laba16
+      - POSTGRES_USER: ${POSTGRES_USER}
+      - POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      - POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - postgres-laba16-data:/var/lib/postgresql/data
+      - postgres-db-data:/var/lib/postgresql/data
 volumes:
-  postgres-laba16-data:
+  postgres-db-data:
